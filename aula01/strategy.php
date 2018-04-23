@@ -1,5 +1,7 @@
 <?php 
 
+//http://dontpad.com/strategy
+
 interface FreteStrategy
 {
 	public function calcular(int $preco);
