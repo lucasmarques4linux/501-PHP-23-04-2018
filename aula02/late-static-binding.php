@@ -26,6 +26,6 @@ echo '<pre>';
 echo Filha::getNome();
 // Pai::NOME = 'José';
 // echo '<br>';
-// echo Pai::getNome();
+// echo Pai::getNome();l
 // echo '<br>';
 // echo Pai::NOME;
