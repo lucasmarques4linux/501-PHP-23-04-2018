@@ -37,7 +37,15 @@ Logando com nosso usuario
 ```
 psql -h localhost -U lucas -d aula
 ``` 
-
+Criando tabela users
+```
+CREATE TABLE users(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(200) NOT NULL,
+	email VARCHAR(150) NOT NULL UNIQUE,
+	pass VARCHAR(200) NOT NULL
+);
+```
 ### MySQL
 Logando no Mysql
 ```
@@ -58,4 +66,13 @@ exit
 Logando com o nosso usuario
 ```
 mysql -h localhost -b aula -u lucas -p
+```
+Criando tabela users
+```
+CREATE TABLE users(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(200) NOT NULL,
+	email VARCHAR(150) NOT NULL UNIQUE,
+	pass VARCHAR(200) NOT NULL
+);
 ```
