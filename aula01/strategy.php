@@ -31,6 +31,11 @@ class FreteTurbo implements FreteStrategy
 		return 10 + $preco;	
 	}
 }
+class Test implements FreteStrategy
+{
+	public function calcular(int $preco){ return 0;}
+	public function test(){}
+}
 class Pedido
 {
 	public $frete;
@@ -55,6 +60,6 @@ class Pedido
 		return $this->frete->calcular($this->preco);
 	}
 }
-$frete = new FreteNormal();
+$frete = new Test();
 $pedido = new Pedido($frete,50);
 echo $pedido->calcularTotalPedido();

@@ -1,5 +1,5 @@
 <?php 
 
-namespace View;
+namespace View\AlunoView;
 
 class View{}
