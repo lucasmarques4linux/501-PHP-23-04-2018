@@ -37,3 +37,25 @@ Logando com nosso usuario
 ```
 psql -h localhost -U lucas -d aula
 ``` 
+
+### MySQL
+Logando no Mysql
+```
+sudo su
+mysql
+```
+Criar banco de dados e nosso usuário
+```
+CREATE DATABASE aula;
+CREATE USER 'lucas'@'localhost' IDENTIFIED BY '@da4linux';
+GRANT ALL PRIVILEGES ON aula.* TO 'lucas'@'localhost'
+```
+Saindo do super usuario
+```
+exit
+exit
+```
+Logando com o nosso usuario
+```
+mysql -h localhost -b aula -u lucas -p
+```
