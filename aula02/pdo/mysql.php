@@ -41,5 +41,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<pre>';
 foreach ($users as $register) {
-	print_r($register);
+	print_r($register['name']);
+	// $register->name;
 }
