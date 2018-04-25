@@ -10,3 +10,11 @@
 
 ## Estrutura de pastas
 
+./
+	index.php
+	conexao.php
+	actions/
+		createUser.php
+		editUser.php
+		deleteUser.php
+		listUser.php
