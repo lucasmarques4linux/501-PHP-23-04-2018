@@ -28,9 +28,9 @@ class Users
 		$stmt->bindValue(':id',$id);
 		$stmt->execute();
 
-		$users = $stmt->fetch(PDO::FETCH_ASSOC);
+		$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-		return $users;
+		return $user;
 	}
 
 	public static function save(string $db = 'mysql',array $data)

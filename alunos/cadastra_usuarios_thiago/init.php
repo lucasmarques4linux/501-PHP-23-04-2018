@@ -2,5 +2,5 @@
 
     putenv("HOST=localhost");
     putenv("DB=aula");
-    putenv("USER=master");
-    putenv("PASS=master");
+    putenv("USER=lucas");
+    putenv("PASS=@da4linux");

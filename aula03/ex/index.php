@@ -2,6 +2,8 @@
 	
 	require 'actions/users.php';
 	$db = ($_GET['base']) ?? 'mysql';
+	// $db = (isset($_GET['base'])) ? $_GET['base'] : 'mysql';
+	// if(isset($_GET['base'])){ $db = $_GET['base']} else {$db ='mysql'};
 	$users = Users::listAll($db);
 	$dbs = ['postgres' => 'PostgreSQL','mysql'=> 'MySQL'];
 
