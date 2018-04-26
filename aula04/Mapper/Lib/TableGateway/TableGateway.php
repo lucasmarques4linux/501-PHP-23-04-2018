@@ -1,22 +1,19 @@
 <?php 
 
-namespace TableGateway;
+namespace Lib\TableGateway;
 
-use TableGateway\Connection;
+use Lib\Db\Connection;
 use PDO;
 use PDOStatement;
 use PDOException;
 
-class TableGateway
+abstract class TableGateway
 {
 	private $con;
 
-	private $table;
-
-	public function __construct(string $table)
+	public function __construct()
 	{
 		$this->con = Connection::getInstance();
-		$this->table = $table;
 	}
 
 	private function bind(PDOStatement $stmt, array $data)
@@ -102,7 +99,7 @@ class TableGateway
 
 		$stmt = $this->con->query($sql);
 
-		return $stmt->fetch(PDO::FETCH_ASSOC);
+		return $stmt->fetchObject($this->entity);
 	}
 	public function findAll(
 		string $keys = '*',
@@ -128,6 +125,12 @@ class TableGateway
 
 		$stmt = $this->con->query($sql);
 
-		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$collection = array();
+
+		while ($register = $stmt->fetchObject($this->entity)) {
+			$collection[] = $register;
+		}
+
+		return $collection;
 	}
 }

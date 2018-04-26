@@ -78,6 +78,7 @@ class User
 	{
 		$table = new TableGateway('users');
 		$arr = $table->findAll();
+		$collection = array();
 		foreach ($arr as $user) {
 			$collection[] = new User($user['name'],$user['email'],$user['pass'],$user['id']);
 		}
