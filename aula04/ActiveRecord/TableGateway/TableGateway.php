@@ -3,14 +3,20 @@
 namespace TableGateway;
 
 use TableGateway\Connection;
+use PDO;
+use PDOStatement;
+use PDOException;
 
 class TableGateway
 {
 	private $con;
 
-	public function __construct()
+	private $table;
+
+	public function __construct(string $table)
 	{
 		$this->con = Connection::getInstance();
+		$this->table = $table;
 	}
 
 	private function bind(PDOStatement $stmt, array $data)
@@ -21,7 +27,7 @@ class TableGateway
 		return $stmt;
 	}
 
-	public function insert(string $table, array $data)
+	public function insert(array $data)
 	{
 		foreach ($data as $key => $value) {
 			$keys[] = $key;
@@ -31,7 +37,7 @@ class TableGateway
 		$keys = implode(',', $keys);
 		$params = implode(',', $params);
 
-		$sql = "INSERT INTO {$table} ({$keys}) VALUES ({$params})";
+		$sql = "INSERT INTO {$this->table} ({$keys}) VALUES ({$params})";
 
 		try {
 			$this->con->beginTransaction();
@@ -43,12 +49,16 @@ class TableGateway
 			$stmt->execute();
 
 			$this->con->commit();
+
 		} catch (PDOException $e) {
+			
 			$this->con->rollback();
+
+			echo "Erro: " . $e->getMessage();
 		}
 
 	}
-	public function update(string $table, array $data, string $where)
+	public function update(array $data, string $where)
 	{
 		foreach ($data as $key => $value) {
 			$sets[] = "{$key}=:{$key}";
@@ -56,7 +66,7 @@ class TableGateway
 
 		$sets = implode(',', $sets);
 
-		$sql = "UPDATE {$table} SET {$sets} WHERE {$where}";
+		$sql = "UPDATE {$this->table} SET {$sets} WHERE {$where}";
 	
 		try {
 			$this->con->beginTransaction();
@@ -70,11 +80,12 @@ class TableGateway
 			$this->con->commit();
 		} catch (PDOException $e) {
 			$this->con->rollback();
+			echo "Erro: " . $e->getMessage();
 		} 
 	}
-	public function delete(string $table, string $where)
+	public function delete(string $where)
 	{
-		$sql = "DELETE FROM {$table} WHERE {$where}";
+		$sql = "DELETE FROM {$this->table} WHERE {$where}";
 
 		try {
 			$this->con->beginTransaction();
@@ -83,19 +94,19 @@ class TableGateway
 
 			$this->con->commit();
 		} catch (PDOException $e) {
-			$this->con->rollback();	
+			$this->con->rollback();
+			echo "Erro: " . $e->getMessage();	
 		}
 	}
-	public function find(string $table,string $keys = '*', string $where)
+	public function find(string $keys = '*', string $where)
 	{
-		$sql = "SELECT {$keys} FROM {$table} WHERE {$where}";
+		$sql = "SELECT {$keys} FROM {$this->table} WHERE {$where}";
 
 		$stmt = $this->con->query($sql);
 
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 	public function findAll(
-		string $table, 
 		string $keys = '*',
 		string $where = null,
 		string $filter = null,
@@ -103,7 +114,7 @@ class TableGateway
 		int $limit = null
 		)
 	{
-		$sql = "SELECT {$keys} FROM {$table}";
+		$sql = "SELECT {$keys} FROM {$this->table}";
 		if($where){
 			$sql .= " WHERE {$where}";
 		}
