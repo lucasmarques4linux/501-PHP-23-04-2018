@@ -1,0 +1,19 @@
+```
+app/
+	Controller/
+		Controller.php
+	View/
+		View.php
+	Model/
+		User.php
+		TableGateway/
+			TableGateway.php
+		Db/
+			Connection.php
+public/
+	index.php
+config/
+	config.php
+src/
+	//templates
+```
