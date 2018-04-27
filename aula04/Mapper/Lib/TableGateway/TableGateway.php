@@ -125,11 +125,7 @@ abstract class TableGateway
 
 		$stmt = $this->con->query($sql);
 
-		$collection = array();
-
-		while ($register = $stmt->fetchObject($this->entity)) {
-			$collection[] = $register;
-		}
+		$collection = $stmt->fetchAll(PDO::FETCH_CLASS,$this->entity);
 
 		return $collection;
 	}
