@@ -1,23 +1,23 @@
 ```
 app/
 	Controller/
-		UsersController.php
+		UserController.php
 		HomeController.php
 	Lib/
 		Db/
-			Connection.php
-			TableGateway.php
+			Connection.php - ok
+			TableGateway.php - ok
 		FrontController/
 			FrontController.php
 		ViewModel/
 			ViewModel.php
 	Model/
-		UsersModel.php
+		User.php - ok
 	View/
 		layout/
 			header.php
 			footer.php
-		users/
+		user/
 			index.php
 		home/
 			index.php
