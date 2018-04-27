@@ -2,10 +2,15 @@
 
 namespace Controller;
 
+use Lib\ViewModel\ViewModel;
+
 class HomeController
 {
-	public function index($id)
+	public function __construct(){
+		$this->viewModel = new ViewModel();
+	}
+	public function index()
 	{
-		echo 'Olá FrontController - sou o HomeController - ID ' . $id;
+		$this->viewModel->render('home/index');
 	}
 }
