@@ -117,7 +117,7 @@ abstract class TableGateway
 			$sql .= " AND $filter";
 		}
 		if ($order) {
-			$sql .= "ORDER BY {$order}";
+			$sql .= " ORDER BY {$order}";
 		}
 		if ($limit) {
 			$sql .= " LIMIT {$limit}";

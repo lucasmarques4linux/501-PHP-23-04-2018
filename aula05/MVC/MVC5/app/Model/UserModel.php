@@ -16,8 +16,6 @@ class UserModel
 
 	public function create(array $user)
 	{
-		var_dump($user);
-		die();
 		$this->userMapper->insert($user);
 	}
 
@@ -34,6 +32,11 @@ class UserModel
 
 	public function all()
 	{
-		return $this->userMapper->findAll();
+		return $this->userMapper->findAll('*',null,null,'id');
+	}
+
+	public function delete(int $id)
+	{
+		$this->userMapper->delete('id='.$id);
 	}
 }

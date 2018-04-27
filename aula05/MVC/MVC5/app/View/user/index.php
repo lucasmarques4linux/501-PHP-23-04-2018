@@ -18,7 +18,17 @@
 				<td><?=$user->getName() ?></td>
 				<td><?=$user->getEmail() ?></td>
 				<td>
-				<a class="btn btn-sm btn-info" href="?r=user/edit/<?=$user->getId() ?>"> Edit</a>
+				<div class="row">
+					<div class="col">
+					<a class="btn btn-sm btn-info" href="?r=user/edit/<?=$user->getId() ?>"> Edit</a>
+					</div>
+					<div class="col">
+					<form method="POST" action="?r=user/delete">
+						<input type="hidden" name="id" value="<?= $user->getId()?>">
+						<input type="submit" class="btn btn-sm btn-danger" value="Delete">
+					</form>
+					</div>
+				</div>
 				</td>
 			</tr>
 	<?php endforeach ?>
