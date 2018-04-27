@@ -23,7 +23,7 @@ class LoginController
 	public static function isLogged()
 	{
 		if (!$_SESSION['logged']) {
-			header('location:?r=login/login');
+			header('location:?r=login');
 		}
 	}
 	public static function userLogged()

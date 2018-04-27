@@ -3,5 +3,14 @@
 </head>
 <body>
 <div style="margin: 25px 100px 25px 100px">
-<h1>MVC5 - FrontController</h1>
+<div class="row">
+	<div class="col">
+		<h1>MVC5 - FrontController</h1>
+	</div>
+	<div class="col">
+		<?php if (isset($_SESSION['logged']) && $_SESSION['logged']): ?>
+			<a href="?r=logout" class="float-right">Logout</a>	
+		<?php endif ?>		
+	</div>
+</div>
 <hr>
