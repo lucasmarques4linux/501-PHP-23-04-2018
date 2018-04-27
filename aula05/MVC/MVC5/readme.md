@@ -12,7 +12,11 @@ app/
 		ViewModel/
 			ViewModel.php - ok
 	Model/
-		User.php - ok
+		Entity/
+			User.php - ok
+		Mapper/
+			UserMapper.php
+		UserModel.php
 	View/
 		layout/
 			header.php - ok
@@ -25,4 +29,6 @@ config/
 	config.php - ok
 public/
 	index.php - ok
+routes/
+	route.php
 autoload.php - ok
