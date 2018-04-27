@@ -3,7 +3,7 @@
 namespace Model;
 
 use Model\Mapper\UserMapper;
-use Model\Entity;
+use Model\Entity\User;
 
 class UserModel
 {
@@ -14,29 +14,26 @@ class UserModel
 		$this->userMapper = new UserMapper();
 	}
 
-	public function create(User $user)
+	public function create(array $user)
 	{
-		$arr = [
-			'name' => $user->getName(),
-			'email' => $user->getEmail(), 
-			'pass' => $user->getPass()
-			];
-		$this->userMapper->insert($arr);
+		var_dump($user);
+		die();
+		$this->userMapper->insert($user);
 	}
 
-	public function edit(User $user)
+	public function edit(array $user)
 	{
-		$arr = [
-			'name' => $user->getName(),
-			'email' => $user->getEmail(), 
-			'pass' => $user->getPass()
-			];
-		$id = 'id='.$user->getId();
-		$this->userMapper->update($arr,$id);
+		$id = 'id='.$user['id'];
+		$this->userMapper->update($user,$id);
 	}
 
 	public function findOne(int $id)
 	{
 		return $this->userMapper->find('*','id='.$id);
+	}
+
+	public function all()
+	{
+		return $this->userMapper->findAll();
 	}
 }

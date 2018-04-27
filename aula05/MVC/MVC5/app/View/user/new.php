@@ -1,5 +1,4 @@
 <form method="POST" action="?r=user/create">
-	<input type="hidden" name="id">
 	<div class="form-group">
 	<label>Name:</label>
 	<input type="text" name="name" class="form-control form-control-sm">	

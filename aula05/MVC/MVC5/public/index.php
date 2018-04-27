@@ -2,10 +2,11 @@
 
 require '../config/config.php';
 require '../autoload.php';
+require '../routes/route.php';
 
-// use Lib\FrontController\FrontController;
+use Lib\FrontController\FrontController;
 
-// (new FrontController())->run();
+$app = new FrontController();
 
-
-print_r((new Model\Mapper\UserMapper())->findAll());
+$app->setRoutes($routes);
+$app->run();
